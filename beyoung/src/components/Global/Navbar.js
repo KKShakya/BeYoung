@@ -14,7 +14,6 @@ import {
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch, BiUser } from "react-icons/bi";
-import img from '../Images/BeYoung.png'
 const User = ()=>{
 return <Menu isLazy>
 <MenuButton>
@@ -45,7 +44,7 @@ return <Menu isLazy>
 
   <MenuDivider />
   <MenuGroup >
-    <MenuItem>Login</MenuItem>
+    <MenuItem><Link to='/signup'>Login</Link></MenuItem>
   </MenuGroup>
 </MenuList>
 </Menu>

@@ -1,5 +1,7 @@
 import React from 'react'
 import {  Routes,Route } from 'react-router-dom'
+import Signup from '../Global/Signup'
+import Login from '../Global/Signup'
 import Home from '../UserSide/Pages/Home'
 function AllRoutes() {
   return (
@@ -11,6 +13,7 @@ function AllRoutes() {
         <Route path='/beauty' element={<h1>Beauty</h1>}/>
         <Route path='/kids' element={<h1>Kids</h1>}/>
         <Route path='/why' element={<h1>BeYoung</h1>}/>
+        <Route path='/signup' element={<Signup />}/>
       </Routes>
     </div>
   )
