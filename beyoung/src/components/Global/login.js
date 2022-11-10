@@ -22,7 +22,7 @@ import {  FaApple, FaFacebookF, FaGoogle } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 
 
-function Signup() {
+export default function Login() {
   return (
     <div>
       <Grid templateColumns="1fr 1fr" w="60%" m="auto">
@@ -67,35 +67,19 @@ function Signup() {
         {/* ?Login form and details */}
         <GridItem border="1px solid red">
           <Text mt="10%" mb="5%">
-            Create account
+            Log In
           </Text>
-          <Text>Unleash your shopping power</Text>
-          <Text>
-            Check <b>BeYoung</b> before you buy.
-          </Text>
+         
 
           {/* form ellemetnt datat */}
           <FormControl w='60%' m='auto' mt='20px'>
             <Input  type="email"  placeholder="Enter Email address"/>
             <Input  type="password"  placeholder="Password"/>
-            <Checkbox defaultChecked size='sm'>Subscribe to personalized sale offers and updates</Checkbox>
-            <Input type="submit" value='SIGN UP' colorScheme='gray'/>
+            <Input type="submit" value='Log In' colorScheme='gray'/>
           </FormControl>
-
-          <Text>or</Text>
-          {/* Four icons google,aple,facebook,wechat */}
-          <Flex justify='center' gap={20} fontSize='1.7rem'>
-            <FaGoogle color='red'/>
-          <FaFacebookF color='#3182ce'/>
-          <FaApple />
-          </Flex>
-          
-          {/* if account exist signin */}
-            <Link to='/login'>Already have an account?Sign In</Link>
+          <Link to='/Signup'>Create account?Sign up</Link>
         </GridItem>
       </Grid>
     </div>
-  );
+  )
 }
-
-export default Signup;

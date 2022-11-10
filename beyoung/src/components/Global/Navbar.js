@@ -2,7 +2,7 @@ import React from "react";
 import {
   HStack,
   Flex,
-  Image,
+  Text,
   MenuButton,
   Menu,
   MenuDivider,
@@ -10,56 +10,68 @@ import {
   MenuGroup,
   MenuList,
   Center,
+  Heading,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch, BiUser } from "react-icons/bi";
-const User = ()=>{
-return <Menu isLazy>
-<MenuButton>
-  <BiUser />
-</MenuButton>
-<MenuList>
+import logo from "../Images/BeYoung.png";
 
-  <MenuGroup >
-    <MenuItem>My Account</MenuItem>
-  </MenuGroup>
+const User = () => {
+  return (
+    <Menu isLazy>
+      <MenuButton>
+        <BiUser />
+      </MenuButton>
+      <MenuList>
+        <MenuGroup>
+          <MenuItem>My Account</MenuItem>
+        </MenuGroup>
 
-  <MenuDivider />
+        <MenuDivider />
 
-  <MenuGroup>
-    <MenuItem>My Recently Viewed</MenuItem>
-  </MenuGroup>
+        <MenuGroup>
+          <MenuItem>My Recently Viewed</MenuItem>
+        </MenuGroup>
 
-  <MenuDivider />
+        <MenuDivider />
 
-  <MenuGroup>
-    <MenuItem>My Closet</MenuItem>
-    <MenuItem>My Orders</MenuItem>
-    <MenuItem>My Loyalty</MenuItem>
-    <MenuItem>My Messages</MenuItem>
-    <MenuItem>Invite Friends</MenuItem>
-    <MenuItem>Settings</MenuItem>
-  </MenuGroup>
+        <MenuGroup>
+          <MenuItem>My Closet</MenuItem>
+          <MenuItem>My Orders</MenuItem>
+          <MenuItem>My Loyalty</MenuItem>
+          <MenuItem>My Messages</MenuItem>
+          <MenuItem>Invite Friends</MenuItem>
+          <MenuItem>Settings</MenuItem>
+        </MenuGroup>
 
-  <MenuDivider />
-  <MenuGroup >
-    <MenuItem><Link to='/signup'>Login</Link></MenuItem>
-  </MenuGroup>
-</MenuList>
-</Menu>
-}
+        <MenuDivider />
+        <MenuGroup>
+          <MenuItem>
+            <Link to="/signup">Login</Link>
+          </MenuItem>
+        </MenuGroup>
+      </MenuList>
+    </Menu>
+  );
+};
 
 function Navbar() {
+  console.log(logo);
   return (
     <div>
       {/* creating navbar with links */}
-      <HStack gap={10} display='flex' justify='space-between' p={6} pt='2'>
+      <HStack gap={10} display="flex" justify="space-between" p={6} pt="2">
         {/* Left box of navabar */}
         <Flex gap={10} justify="space-between">
           <Link to="/">
-
-            <Image src="/Images/BeYoung.png" alt="Logo"></Image>
+            <Heading
+              fontFamily="cursive"
+              bgGradient="linear-gradient(90deg, rgba(29,28,28,1) 0%, rgba(111,107,107,1) 100%)"
+              bgClip="text"
+            >
+              BeYoung
+            </Heading>
           </Link>
           <Link to="/womens">Womens</Link>
           <Link to="/mens">Mens</Link>
@@ -70,14 +82,17 @@ function Navbar() {
         </Flex>
 
         {/* right box of navabar */}
-        <Flex gap={10} justify='center' align='center'>
+        <Flex gap={10} justify="center" align="center">
           <Link to="/cart">
             <AiOutlineShoppingCart />
           </Link>
-          
+
           {/* chakra ui menutiem for user properties */}
-         <User />
-         <Center gap={1}><BiSearch />Search</Center>
+          <User />
+          <Center gap={1}>
+            <BiSearch />
+            Search
+          </Center>
         </Flex>
       </HStack>
     </div>
