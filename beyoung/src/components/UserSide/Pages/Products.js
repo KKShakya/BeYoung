@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, VStack, Flex, Box, Center, Heading } from "@chakra-ui/react";
 import ProductItem from "./productItem";
 // this page is for all the products passed values
 
 function Products({ data }) {
+
+ 
   console.log(data);
   return (
     <div>
@@ -19,7 +21,7 @@ function Products({ data }) {
           <Heading as="h3">Size</Heading>
         </VStack>
         <Grid templateColumns="repeat(4,1fr)" gap={10} border="1px solid #edebef" p={2}>
-          {data.map((item) => {
+          {data && data.map((item) => {
             return (
               <ProductItem
                 img={item.images[2]}
@@ -33,7 +35,7 @@ function Products({ data }) {
           })}
         </Grid>
       </Grid>
-      <Center>1 2 3 4 5 6 5 7 7 </Center>
+      
     </div>
   );
 }

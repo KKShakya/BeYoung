@@ -6692,5 +6692,14 @@
       "rating": null,
       "rating_count": null
     }
+  ],
+  "users":[
+    {
+      "id":1,
+      "email":"hello@gmail.com",
+      "orders":0,
+      "issues":0,
+       "cancelled":0
+    }
   ]
 }

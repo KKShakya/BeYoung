@@ -6,6 +6,7 @@ import Home from '../UserSide/Pages/Home'
 import Womens from '../UserSide/Pages/Womens'
 import Mens from '../UserSide/Pages/mens'
 import Kids from '../UserSide/Pages/kids'
+import WhyBeyoung from '../UserSide/Pages/whyBeyoung'
 function AllRoutes() {
   return (
     <div>
@@ -13,9 +14,9 @@ function AllRoutes() {
         <Route path='/' element={<Home />} />
         <Route path='/womens' element={<Womens />}/>
         <Route path='/mens' element={<Mens />}/>
-        <Route path='/beauty' element={<h1>Beauty</h1>}/>
+  
         <Route path='/kids' element={<Kids />}/>
-        <Route path='/why' element={<h1>BeYoung</h1>}/>
+        <Route path='/why' element={<WhyBeyoung / >}/>
         <Route path='/signup' element={<Signup />}/>
         <Route path='/login' element={<Login />}/>
       </Routes>

@@ -9,7 +9,7 @@ import {
   GridItem,
   Center,
   FormControl,
-  FormLabel,Checkbox
+  Button,Checkbox
 } from "@chakra-ui/react";
 import {
   BsFillBellFill,
@@ -25,6 +25,12 @@ import { Link } from 'react-router-dom'
 export default function Login() {
   return (
     <div>
+       <Button variant='link'
+        position='relative' top='1.3em' right={{
+          sm:'-350',
+          md:'-270',
+          lg:'-450'
+        }}  ><Link to='/'>X</Link></Button>
       <Grid templateColumns="1fr 1fr" w="60%" m="auto">
         {/* left side of the page */}
         <GridItem border="1px solid black" bg="black" color="white">

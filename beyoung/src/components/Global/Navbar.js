@@ -66,6 +66,7 @@ function Navbar() {
         <Flex gap={10} justify="space-between">
           <Link to="/">
             <Heading
+            mt={-2}
               fontFamily="cursive"
               bgGradient="linear-gradient(90deg, rgba(29,28,28,1) 0%, rgba(111,107,107,1) 100%)"
               bgClip="text"
@@ -75,7 +76,6 @@ function Navbar() {
           </Link>
           <Link to="/womens">Womens</Link>
           <Link to="/mens">Mens</Link>
-          <Link to="/beauty">Beauty</Link>
           <Link to="/">Home</Link>
           <Link to="/kids">Kids</Link>
           <Link to="/why">WhyBeYoung</Link>
