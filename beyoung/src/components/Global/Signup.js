@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   VStack,
@@ -9,7 +9,8 @@ import {
   GridItem,
   Center,
   FormControl,
-  Button,Checkbox
+  Button,
+  Checkbox,
 } from "@chakra-ui/react";
 import {
   BsFillBellFill,
@@ -18,23 +19,69 @@ import {
   BsTrophyFill,
 } from "react-icons/bs";
 import { HiDocumentText } from "react-icons/hi";
-import {  FaApple, FaFacebookF, FaGoogle } from "react-icons/fa";
-import { Link, Navigate } from 'react-router-dom'
+import { FaApple, FaFacebookF, FaGoogle } from "react-icons/fa";
+import { Link, Navigate } from "react-router-dom";
 
+import { set_users } from "./Axios/Api";
+import axios from "axios";
 
 function Signup() {
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    subscription: "",
+  });
+const [token,setToken] = useState(false);
 
+  // user validator checking if user exist or not on api
 
- 
+ if(token){
+alert('succesfully signed up')
+  return <Navigate to='/login' />
+ }
 
+  const validateUSer = (username) => {
+    axios
+      .get("https://confused-lime-puffer.cyclic.app/users"+"?email="+username)
+      .then((res) => {
+        if (res.data.length > 0) {
+          console.log(res.data.length);
+          alert("user already exist");
+        }else{
+          set_users(email,password,subscription).then((res)=>{
+            console.log(res);
+          }).catch((err)=>console.log(err));
+          setToken(true);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    validateUSer(email);
+    
+  };
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    const val = type === "checkbox" ? checked : value;
+    setUser({ ...user, [name]: val });
+  };
+
+  const { email, password, subscription } = user;
   return (
     <div>
-        <Button variant ='link' 
-        position='relative' top='1.3em' right={{
-          sm:'-350',
-          md:'-270',
-          lg:'-450'
-        }}  ><Link to='/'>X</Link></Button>
+      <Button
+        variant="link"
+        position="relative"
+        top="1.3em"
+        right={{
+          sm: "-350",
+          md: "-270",
+          lg: "-450",
+        }}
+      >
+        <Link to="/">X</Link>
+      </Button>
       <Grid templateColumns="1fr 1fr" w="60%" m="auto">
         {/* left side of the page */}
         <GridItem border="1px solid black" bg="black" color="white">
@@ -85,23 +132,55 @@ function Signup() {
           </Text>
 
           {/* form ellemetnt datat */}
-          <FormControl w='60%' m='auto' mt='20px'>
-            <Input  type="email"  placeholder="Enter Email address"/>
-            <Input  type="password"  placeholder="Password"/>
-            <Checkbox defaultChecked size='sm'>Subscribe to personalized sale offers and updates</Checkbox>
-            <Input type="submit" value='SIGN UP' colorScheme='gray'/>
+          <FormControl w="60%" m="auto" mt="20px">
+            <Input
+              m={2}
+              type="email"
+              name="email"
+              placeholder="Enter Email address"
+              value={email}
+              onChange={handleChange}
+            />
+            <Input
+              m={2}
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={password}
+              onChange={handleChange}
+              isRequired="true"
+            />
+            <Checkbox
+              size="sm"
+              type="checkbox"
+              name="subscription"
+              value={subscription}
+              onChange={handleChange}
+            >
+              Subscribe to personalized sale offers and updates
+            </Checkbox>
+            <Input
+              m={2}
+              onClick={handleSubmit}
+              type="submit"
+              value="SIGN UP"
+              color="white"
+              bgGradient="linear-gradient(90deg, rgba(29,28,28,1) 0%, rgba(111,107,107,1) 100%)"
+            />
           </FormControl>
 
-          <Text>or</Text>
+          <Text m={5}>or</Text>
           {/* Four icons google,aple,facebook,wechat */}
-          <Flex justify='center' gap={20} fontSize='1.7rem'>
-            <FaGoogle color='red'/>
-          <FaFacebookF color='#3182ce'/>
-          <FaApple />
+          <Flex justify="center" gap={20} fontSize="1.7rem">
+            <FaGoogle color="red" />
+            <FaFacebookF color="#3182ce" />
+            <FaApple />
           </Flex>
-          
+
           {/* if account exist signin */}
-            <Link to='/login'>Already have an account?Sign In</Link>
+          <Text m={2}>
+            <Link to="/login">Already have an account?Sign In</Link>
+          </Text>
         </GridItem>
       </Grid>
     </div>

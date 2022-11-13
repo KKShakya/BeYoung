@@ -6,7 +6,6 @@ import { AiFillQuestionCircle, AiOutlineSearch, AiOutlineUser } from 'react-icon
 export default function Navbar() {
   return (
     <div >
- 
 
      <Stack spacing={4} direction='row'>
   {/* If you add the size prop to `InputGroup`, it'll pass it to all its children. */}

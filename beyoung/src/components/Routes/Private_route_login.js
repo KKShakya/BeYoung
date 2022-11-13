@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { Navigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/LoginContext/AuthContext';
 
-function Private_route_login() {
-  return (
-    <>
-    </>
-  )
+function Private_Route({children}) {
+  const {state} = useContext(AuthContext)
+  if(!state.isAuth){
+    return <Navigate to="/signup"/>
+  }
+  return children;
 }
 
-export default Private_route_login
+export default Private_Route

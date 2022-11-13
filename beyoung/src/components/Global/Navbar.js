@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   HStack,
   Flex,
@@ -11,13 +11,20 @@ import {
   MenuList,
   Center,
   Heading,
+  Box,
+  Button
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiSearch, BiUser } from "react-icons/bi";
-import logo from "../Images/BeYoung.png";
+import { CartContext } from "../../Context/cartContext/CartContext";
+import { AuthContext } from "../../Context/LoginContext/AuthContext";
+import { Logout } from "../../Context/LoginContext/actions";
 
 const User = () => {
+ 
+const{state,dispatch} = useContext(AuthContext);
+// {logout is implemented in navbar}
   return (
     <Menu isLazy>
       <MenuButton>
@@ -25,7 +32,9 @@ const User = () => {
       </MenuButton>
       <MenuList>
         <MenuGroup>
-          <MenuItem>My Account</MenuItem>
+          <MenuItem color='red' fontSize='2rem' fontFamily='cursive'>
+          {state.isAuth?state.data.email:"My Account"}
+          </MenuItem>
         </MenuGroup>
 
         <MenuDivider />
@@ -48,7 +57,7 @@ const User = () => {
         <MenuDivider />
         <MenuGroup>
           <MenuItem>
-            <Link to="/signup">Login</Link>
+            {state.isAuth?<Button variant="link" onClick={()=>dispatch(Logout())}><Link to="/">Logout</Link></Button>:<Link to="/signup">Login</Link>}
           </MenuItem>
         </MenuGroup>
       </MenuList>
@@ -57,7 +66,9 @@ const User = () => {
 };
 
 function Navbar() {
-  console.log(logo);
+  const { state } = useContext(CartContext);
+
+  // console.log(logo);
   return (
     <div>
       {/* creating navbar with links */}
@@ -66,7 +77,7 @@ function Navbar() {
         <Flex gap={10} justify="space-between">
           <Link to="/">
             <Heading
-            mt={-2}
+              mt={-2}
               fontFamily="cursive"
               bgGradient="linear-gradient(90deg, rgba(29,28,28,1) 0%, rgba(111,107,107,1) 100%)"
               bgClip="text"
@@ -84,7 +95,12 @@ function Navbar() {
         {/* right box of navabar */}
         <Flex gap={10} justify="center" align="center">
           <Link to="/cart">
-            <AiOutlineShoppingCart />
+            <Box size='lg' display='flex'>
+              <AiOutlineShoppingCart />
+              <Text as='span'color="red" position="relative" right={-1} top={-1}>
+                ({state.length})
+              </Text>
+            </Box>
           </Link>
 
           {/* chakra ui menutiem for user properties */}
