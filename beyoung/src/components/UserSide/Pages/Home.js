@@ -1,5 +1,5 @@
 import React from "react";
-// import ImageSlider from "../../Global/ImageSlider";
+import ImageSlider from "../../Global/ImageSlider";
 import images from "../../Images/images";
 import {
   Center,
@@ -18,7 +18,7 @@ import images2 from "../../Images/images2";
 function Home() {
   return (
     <div>
-      {/* <ImageSlider images={images} scroll="1" slides="1" /> */}
+      <ImageSlider images={images} scroll="1" slides="1" />
       <Box mt="5%" textAlign="center">
       <Center fontSize={'2rem'} fontFamily='serif' fontWeight={'bold'}>Featured Partners</Center>
         <Text color="gray" fontSize="xl">
